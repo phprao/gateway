@@ -11,7 +11,6 @@ import (
 	"strings"
 	"sync"
 	"time"
-	"voteapi/pkg/util"
 )
 
 const ServiceStatusReady = 0
@@ -144,7 +143,7 @@ func (r *Router) ServiceBalance(serviceName string) (Service, error) {
 
 		return services[ind], nil
 	} else if r.BalanceType == BalanceByWeight {
-		da := util.RandInt(1, 100)
+		da := RandInt(1, 100)
 		sum := 0
 		for k, v := range services {
 			if da >= sum && da <= sum+v.Weight {

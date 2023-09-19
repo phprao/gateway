@@ -4,7 +4,8 @@ import (
 	"log"
 	"net/http"
 	"time"
-	"voteapi/app/gateway/plugin"
+
+	"github.com/phprao/gateway/plugin"
 )
 
 func main() {

@@ -3,10 +3,12 @@ package plugin
 import (
 	"encoding/json"
 	"fmt"
+	"math/rand"
 	"net"
 	"net/http"
 	"strings"
 	"sync"
+	"time"
 )
 
 const RESPONSE_CODE_ERROR = 5000
@@ -146,4 +148,20 @@ func (s *Set[T]) All() []T {
 	}
 
 	return res
+}
+
+var src = rand.NewSource(time.Now().UnixNano())
+var Rander = rand.New(src)
+
+// 随机数生成
+// @Param	min 	int	最小值
+// @Param 	max		int	最大值
+// @return  int		[min, max]
+func RandInt(min int, max int) int {
+	if min == max {
+		return min
+	}
+	// Rander.Intn  --> [0, n)
+	num := Rander.Intn(max-min+1) + min
+	return num
 }

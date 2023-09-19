@@ -7,8 +7,8 @@ import (
 	"sync"
 	"testing"
 	"time"
-	"voteapi/app/gateway/plugin"
-	"voteapi/pkg/util"
+
+	"github.com/phprao/gateway/plugin"
 )
 
 func TestRace(t *testing.T) {
@@ -37,7 +37,7 @@ func TestBalance(t *testing.T) {
 	}
 	res := make(map[int]int)
 	for i := 0; i < 1000; i++ {
-		da := util.RandInt(1, 100)
+		da := plugin.RandInt(1, 100)
 		sum := 0
 		for k, v := range services {
 			if da >= sum && da <= sum+v.Weight {
@@ -56,7 +56,7 @@ func TestFun(t *testing.T) {
 	for i := 0; i < 30; i++ {
 		re := w.Check(10)
 		log.Println(re)
-		n := util.RandInt(30, 100)
+		n := plugin.RandInt(30, 100)
 		time.Sleep(time.Duration(n) * time.Millisecond)
 	}
 }
